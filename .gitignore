@@ -16,3 +16,10 @@ hs_err_pid*
 # Intellij IDEA
 .idea/
 examples-guice-hello.iml
+/.settings/org.eclipse.core.resources.prefs
+/.metals/metals.h2.db
+/.metals/metals.lock.db
+/.metals/metals.log
+/.settings/org.eclipse.jdt.apt.core.prefs
+/.settings/org.eclipse.jdt.core.prefs
+/.settings/org.eclipse.m2e.core.prefs
