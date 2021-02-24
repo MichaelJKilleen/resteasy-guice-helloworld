@@ -7,6 +7,9 @@ import javax.inject.Inject;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
+import javax.ws.rs.Produces;
+import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
 import java.util.List;
 
 @Path("customer")
@@ -20,13 +23,16 @@ public class CustomerResource {
 
     @GET
     @Path("{customerID}")
-    public String getCustomer(@PathParam("customerID") Integer customerID) {
-        //return customerService.find(customerID).get();
-        return "Test 123";
+    @Produces(MediaType.APPLICATION_JSON)
+    public Customer getCustomer(@PathParam("customerID") Integer customerID) {
+        return customerService.find(customerID).get();
+
     }
 
     @GET
-    public List<Customer> getCustomers() {
-        return customerService.findAll();
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response getCustomers() {
+
+        return Response.ok(customerService.findAll()).build();
     }
 }
