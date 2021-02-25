@@ -5,25 +5,24 @@
  */
 package com.bottomfeeder.helloworld;
 
-import com.bottomfeeder.helloworld.resource.CustomerResource;
 import com.google.inject.Module;
-import java.util.List;
-import javax.servlet.ServletContext;
 import org.jboss.resteasy.plugins.guice.GuiceResteasyBootstrapServletContextListener;
 
+import javax.servlet.ServletContext;
+import java.util.List;
+
 /**
- *
- * @author dherik
+ * @author mkilleen
  */
 public class MyServletContextListener extends GuiceResteasyBootstrapServletContextListener  {
 
     @Override
     protected List<? extends Module> getModules(ServletContext context) {
-        List modules1 = super.getModules(context);
-        modules1.add(new HelloModule());
-        modules1.add(new ClassicModelsModule());
-        System.out.println(modules1.toString());
-        return modules1;
+        List modules = super.getModules(context);
+        modules.add(new HelloModule());
+        modules.add(new ClassicModelsModule());
+        System.out.println(modules.toString());
+        return modules;
     }
-    
+
 }
