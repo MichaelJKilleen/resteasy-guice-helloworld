@@ -1,6 +1,7 @@
 package com.bottomfeeder.helloworld.resource;
 
 import com.bottomfeeder.helloworld.model.Customer;
+import com.bottomfeeder.helloworld.model.CustomerBuilder;
 import com.bottomfeeder.helloworld.service.CustomerService;
 
 import javax.inject.Inject;
@@ -25,14 +26,12 @@ public class CustomerResource {
     @Path("{customerID}")
     @Produces(MediaType.APPLICATION_JSON)
     public Customer getCustomer(@PathParam("customerID") Integer customerID) {
-        return customerService.find(customerID).get();
-
+        return customerService.find(customerID).orElse((new CustomerBuilder()).createCustomer());
     }
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public Response getCustomers() {
-
         return Response.ok(customerService.findAll()).build();
     }
 }
