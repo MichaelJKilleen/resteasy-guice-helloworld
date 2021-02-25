@@ -1,7 +1,5 @@
 package com.bottomfeeder.helloworld;
 
-import com.bottomfeeder.helloworld.persist.CustomerPersist;
-import com.bottomfeeder.helloworld.persist.dao.CustomerDao;
 import com.bottomfeeder.helloworld.resource.CustomerResource;
 import com.bottomfeeder.helloworld.service.CustomerService;
 import com.bottomfeeder.helloworld.service.DefaultCustomerService;
@@ -13,6 +11,6 @@ public class ClassicModelsModule implements Module {
     public void configure(Binder binder) {
         binder.bind(CustomerResource.class);
         binder.bind(CustomerService.class).to(DefaultCustomerService.class);
-        binder.bind(CustomerPersist.class).to(CustomerDao.class);
+
     }
 }

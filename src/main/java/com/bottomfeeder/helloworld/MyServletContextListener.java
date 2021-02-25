@@ -5,6 +5,7 @@
  */
 package com.bottomfeeder.helloworld;
 
+import com.bottomfeeder.helloworld.persist.PersistModule;
 import com.google.inject.Module;
 import org.jboss.resteasy.plugins.guice.GuiceResteasyBootstrapServletContextListener;
 
@@ -21,6 +22,7 @@ public class MyServletContextListener extends GuiceResteasyBootstrapServletConte
         List modules = super.getModules(context);
         modules.add(new HelloModule());
         modules.add(new ClassicModelsModule());
+        modules.add(new PersistModule());
         System.out.println(modules.toString());
         return modules;
     }
