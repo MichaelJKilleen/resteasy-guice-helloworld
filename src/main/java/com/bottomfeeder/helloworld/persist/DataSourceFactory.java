@@ -1,6 +1,8 @@
 package com.bottomfeeder.helloworld.persist;
 
 import com.mysql.cj.jdbc.MysqlDataSource;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.sql.DataSource;
 import java.io.FileInputStream;
@@ -11,6 +13,7 @@ import java.util.Properties;
  * https://www.journaldev.com/2509/java-datasource-jdbc-datasource-example
  */
 public class DataSourceFactory {
+    private static final Logger logger = LoggerFactory.getLogger(DataSourceFactory.class);
 
     public DataSourceFactory() {
         try {

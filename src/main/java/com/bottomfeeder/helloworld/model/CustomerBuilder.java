@@ -1,8 +1,14 @@
 package com.bottomfeeder.helloworld.model;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.math.BigDecimal;
 
 public class CustomerBuilder {
+
+    private static final Logger logger = LoggerFactory.getLogger(CustomerBuilder.class);
+
     private Integer customerNumber;
     private String customerName;
     private String lastModifiedDate;
@@ -100,13 +106,35 @@ public class CustomerBuilder {
         this.postCode = getValueOrDefault(postCode,"");
         this.state = getValueOrDefault(state,"");
         this.contactFirstName = getValueOrDefault(contactFirstName,"");
-        this.contactLastName = getValueOrDefault(contactLastName,"");
-        this.creditLimit = getValueOrDefault(creditLimit,BigDecimal.ZERO);
+        this.contactLastName = getValueOrDefault(contactLastName, "");
+        this.creditLimit = getValueOrDefault(creditLimit, BigDecimal.ZERO);
         this.phone = getValueOrDefault(phone, "");
         return new Customer(customerNumber, customerName, lastModifiedDate, version, addressLine1, addressLine2, city, country, postCode, state, contactFirstName, contactLastName, creditLimit, phone);
     }
 
+
     public static <T> T getValueOrDefault(T value, T defaultValue) {
         return value == null ? defaultValue : value;
+    }
+
+
+    @Override
+    public String toString() {
+        return "{\"CustomerBuilder\":{"
+                + "\"customerNumber\":\"" + customerNumber + "\""
+                + ", \"customerName\":\"" + customerName + "\""
+                + ", \"lastModifiedDate\":\"" + lastModifiedDate + "\""
+                + ", \"version\":\"" + version + "\""
+                + ", \"addressLine1\":\"" + addressLine1 + "\""
+                + ", \"addressLine2\":\"" + addressLine2 + "\""
+                + ", \"city\":\"" + city + "\""
+                + ", \"country\":\"" + country + "\""
+                + ", \"postCode\":\"" + postCode + "\""
+                + ", \"state\":\"" + state + "\""
+                + ", \"contactFirstName\":\"" + contactFirstName + "\""
+                + ", \"contactLastName\":\"" + contactLastName + "\""
+                + ", \"creditLimit\":\"" + creditLimit + "\""
+                + ", \"phone\":\"" + phone + "\""
+                + "}}";
     }
 }

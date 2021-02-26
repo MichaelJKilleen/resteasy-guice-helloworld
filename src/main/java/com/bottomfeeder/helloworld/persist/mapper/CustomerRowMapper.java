@@ -4,11 +4,15 @@ import com.bottomfeeder.helloworld.model.Customer;
 import com.bottomfeeder.helloworld.model.CustomerBuilder;
 import org.jdbi.v3.core.mapper.RowMapper;
 import org.jdbi.v3.core.statement.StatementContext;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class CustomerRowMapper implements RowMapper<Customer> {
+
+    private static final Logger logger = LoggerFactory.getLogger(CustomerRowMapper.class);
 
     @Override
     public Customer map(ResultSet resultSet, StatementContext ctx) throws SQLException {
